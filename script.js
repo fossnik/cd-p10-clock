@@ -1,4 +1,4 @@
-var timer, remainder;
+var timer;
 var timer_active = false;
 var timeDislay = document.getElementById("timeDisplay");
 var clockToggle = document.getElementById("startStop");
@@ -15,6 +15,7 @@ function startStop() {
 }
 
 function countDown(seconds) {
+	console.log(remainder)
 	if (seconds > 0) {
 		displayTime(seconds--); // decrement and display
 		timer = setTimeout(function(){ countDown(seconds) }, 10);
@@ -26,7 +27,7 @@ function countDown(seconds) {
 }
 
 function displayTime(seconds) {
-	remainder = seconds % 60;
+	var remainder = seconds % 60;
 	if (remainder < 10) {
 		timeDislay.innerHTML = Math.floor(seconds / 60) + ":0" + remainder;
 	} else {

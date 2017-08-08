@@ -1,24 +1,28 @@
-var c = 10;
-var t;
+var t, seconds;
 var timer_active = false;
+var timeDislay = document.getElementById("timeDisplay");
+var clockToggle = document.getElementById("startStop");
+var timeInput = document.getElementById("timeInput");
 
-function timedCount() {
-	if (c !== 0) {
-		document.getElementById("seconds").innerHTML = c--;
-		t = setTimeout(function(){ timedCount() }, 1000);
+function startStop() {
+	seconds = timeInput.value;
+	if (timer_active == false) {
+		clockToggle.innerHTML = "STOP";
+		timer_active = true;
+		countDown();
 	} else {
-		document.getElementById("seconds").innerHTML = "TIME IS UP!";
+		clockToggle.innerHTML = "START";
+		timer_active = false;
+		clearTimeout(t);
 	}
 }
 
-function startCount() {
-	if (!timer_active) {
-		timer_active = true;
-		timedCount();
-		document.getElementById("toggle").innerHTML = "STOP";
+function countDown() {
+	if (seconds === 0) {
+		timeDislay.innerHTML = "TIME IS UP!";
+		startStop();
 	} else {
-		clearTimeout(t);
-		timer_active = false;
-		document.getElementById("toggle").innerHTML = "START";
+		timeDislay.innerHTML = seconds--;
+		t = setTimeout(function(){ countDown() }, 200);
 	}
 }

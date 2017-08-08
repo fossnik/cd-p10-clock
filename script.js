@@ -1,10 +1,14 @@
-var c = 0;
+var c = 10;
 var t;
 var timer_active = false;
 
 function timedCount() {
-	document.getElementById("seconds").innerHTML = c++;
-	t = setTimeout(function(){ timedCount() }, 1000);
+	if (c !== 0) {
+		document.getElementById("seconds").innerHTML = c--;
+		t = setTimeout(function(){ timedCount() }, 1000);
+	} else {
+		document.getElementById("seconds").innerHTML = "TIME IS UP!";
+	}
 }
 
 function startCount() {

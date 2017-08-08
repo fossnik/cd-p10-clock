@@ -5,7 +5,7 @@ var clockToggle = document.getElementById("startStop");
 var timeInput = document.getElementById("timeInput");
 
 function startStop() {
-	seconds = timeInput.value;
+	seconds = timeInput.value * 60;
 	if (timer_active == false) {
 		clockToggle.innerHTML = "STOP";
 		timer_active = true;
@@ -23,6 +23,6 @@ function countDown() {
 		startStop();
 	} else {
 		timeDislay.innerHTML = seconds--;
-		t = setTimeout(function(){ countDown() }, 200);
+		t = setTimeout(function(){ countDown() }, 10);
 	}
 }

@@ -9,7 +9,7 @@ function startStop() {
 	if (timer_active == false) {
 		// clockToggle.innerHTML = "STOP";
 		timer_active = true;
-		countDown();
+		countDown(seconds);
 	} else {
 		// clockToggle.innerHTML = "START";
 		timer_active = false;
@@ -17,18 +17,18 @@ function startStop() {
 	}
 }
 
-function countDown() {
-	if (seconds === 0) {
+function countDown(sec) {
+	if (sec === 0) {
 		timeDislay.innerHTML = "TIME IS UP!";
 		startStop();
 	} else {
-		remainder = seconds % 60;
+		remainder = sec % 60;
 		if (remainder < 10) {
-			timeDislay.innerHTML = Math.floor(seconds / 60) + ":0" + remainder;
+			timeDislay.innerHTML = Math.floor(sec / 60) + ":0" + remainder;
 		} else {
-			timeDislay.innerHTML = Math.floor(seconds / 60) + ":" + remainder;
+			timeDislay.innerHTML = Math.floor(sec / 60) + ":" + remainder;
 		}
-		seconds--;
-		timeOut = setTimeout(function(){ countDown() }, 1000);
+		sec--;
+		timeOut = setTimeout(function(){ countDown(sec) }, 1000);
 	}
 }

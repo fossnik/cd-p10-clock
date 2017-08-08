@@ -21,3 +21,6 @@ h1 {
 #timeInput {
 	width: 32px;
 }
+#timeDisplay{
+	font-size: 3em;
+}

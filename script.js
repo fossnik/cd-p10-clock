@@ -7,11 +7,11 @@ var timeInput = document.getElementById("timeInput");
 function startStop() {
 	seconds = timeInput.value * 60;
 	if (timer_active == false) {
-		clockToggle.innerHTML = "STOP";
+		// clockToggle.innerHTML = "STOP";
 		timer_active = true;
 		countDown();
 	} else {
-		clockToggle.innerHTML = "START";
+		// clockToggle.innerHTML = "START";
 		timer_active = false;
 		clearTimeout(t);
 	}
@@ -22,7 +22,14 @@ function countDown() {
 		timeDislay.innerHTML = "TIME IS UP!";
 		startStop();
 	} else {
-		timeDislay.innerHTML = seconds--;
-		t = setTimeout(function(){ countDown() }, 10);
+		var minutes = Math.floor(seconds / 60);
+		var remainder = seconds - minutes * 60;
+		if (remainder < 10) {
+			timeDislay.innerHTML = minutes + ":0" + remainder;
+		} else {
+			timeDislay.innerHTML = minutes + ":" + remainder;
+		}
+		seconds--;
+		t = setTimeout(function(){ countDown() }, 1000);
 	}
 }

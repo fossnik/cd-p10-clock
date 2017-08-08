@@ -5,17 +5,15 @@ var clockToggle = document.getElementById("startStop");
 var timeInput = document.getElementById("timeInput");
 
 function startStop() {
-	if (timer_active === false) {
-		timer_active = true;
+	timer_active = !timer_active;
+	if (timer_active) {
 		countDown(timeInput.value * 60);
 	} else {
-		timer_active = false;
 		clearTimeout(timer); // stops the countdown
 	}
 }
 
 function countDown(seconds) {
-	console.log(remainder)
 	if (seconds > 0) {
 		displayTime(seconds--); // decrement and display
 		timer = setTimeout(function(){ countDown(seconds) }, 10);

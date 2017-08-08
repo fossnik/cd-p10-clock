@@ -1,4 +1,4 @@
-var t, seconds;
+var timeOut, seconds, remainder;
 var timer_active = false;
 var timeDislay = document.getElementById("timeDisplay");
 var clockToggle = document.getElementById("startStop");
@@ -13,7 +13,7 @@ function startStop() {
 	} else {
 		// clockToggle.innerHTML = "START";
 		timer_active = false;
-		clearTimeout(t);
+		clearTimeout(timeOut);
 	}
 }
 
@@ -22,14 +22,13 @@ function countDown() {
 		timeDislay.innerHTML = "TIME IS UP!";
 		startStop();
 	} else {
-		var minutes = Math.floor(seconds / 60);
-		var remainder = seconds - minutes * 60;
+		remainder = seconds % 60;
 		if (remainder < 10) {
-			timeDislay.innerHTML = minutes + ":0" + remainder;
+			timeDislay.innerHTML = Math.floor(seconds / 60) + ":0" + remainder;
 		} else {
-			timeDislay.innerHTML = minutes + ":" + remainder;
+			timeDislay.innerHTML = Math.floor(seconds / 60) + ":" + remainder;
 		}
 		seconds--;
-		t = setTimeout(function(){ countDown() }, 1000);
+		timeOut = setTimeout(function(){ countDown() }, 1000);
 	}
 }

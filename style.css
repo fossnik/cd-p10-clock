@@ -10,17 +10,35 @@ h1 {
 	text-align: center;
 }
 #clock {
-	width: 300px;
-	height: 300px;
+	width: 360px;
+	height: 360px;
 	background-color: #3399FF;
 }
 .center {
 	text-align: center;
 	margin: auto;
 }
-#timeInput {
+input {
 	width: 32px;
 }
 #timeDisplay{
 	font-size: 3em;
+}
+#timeBox {
+	width: 140px;
+	height: 3em;
+	background-color: #2086E0;
+	text-align: center;
+	margin: auto;
+	padding-top: 30px;
+		justify-content: center;
+		align-items: center;
+}
+#timeX {
+	float: left;
+	padding-left: 1em;
+}
+#restX {
+	float: right;
+	padding-right: 1em;
 }

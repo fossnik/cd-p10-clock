@@ -10,10 +10,23 @@
 	<div id="clock">
 		<div class="center">
 			<h1>Pomodoro Clock!</h1>
-			<input id="timeInput" type="number" value="25"></input>
+			<div id="timeX">
+				Work:
+				<br><input id="timeInput" type="number" value="25"></input>
+				<br><button onclick="timeInput.value = Number(timeInput.value) + 1">+</button>
+				<button onclick="timeInput.value = Number(timeInput.value) - 1">-</button>
+			</div>
+			<div id="restX">
+				Rest:
+				<br><input id="restInput" type="number" value="5"></input>
+				<br><button onclick="restInput.value = Number(restInput.value) + 1">+</button>
+				<button onclick="restInput.value = Number(restInput.value) - 1">-</button>
+			</div>
 			<button id="startStop" onclick="startStop()">Start!</button>
 			<br>
-				<p id="timeDisplay"></p>
+				<div id="timeBox">
+					<div id="timeDisplay"></div>
+				</div>
 		</div>
 	</div>
 </body>

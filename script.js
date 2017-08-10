@@ -1,8 +1,8 @@
 var timer;
 var timer_active = false;
 var timeDislay = document.getElementById("timeDisplay");
-var clockToggle = document.getElementById("startStop");
 var timeInput = document.getElementById("timeInput");
+var restInput = document.getElementById("restInput");
 
 function startStop() {
 	if (timer_active === false) {
@@ -15,13 +15,27 @@ function startStop() {
 }
 
 function countDown(seconds) {
-	if (seconds > 0) {
+	timer_active = true;
+	if (seconds >= 0) {
 		displayTime(seconds--); // decrement and display
 		timer = setTimeout(function(){ countDown(seconds) }, 10);
 	} else {
-		timeDislay.innerHTML = "TIME IS UP!";
+		document.getElementById("workBreak").innerHTML = "Smoke if you got 'em";
 		timer_active = false;
 		clearTimeout(timer);
+		breakDown(restInput.value * 60);
+	}
+}
+function breakDown(seconds) {
+	timer_active = true;
+	if (seconds >= 0) {
+		displayTime(seconds--); // decrement and display
+		timer = setTimeout(function(){ breakDown(seconds) }, 10);
+	} else {
+		document.getElementById("workBreak").innerHTML = "You Work Now!";
+		timer_active = false;
+		clearTimeout(timer);
+		countDown(timeInput.value * 60);
 	}
 }
 

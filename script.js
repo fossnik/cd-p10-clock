@@ -1,5 +1,6 @@
 var timer;
 var timer_active = false;
+var workingNow = true;
 var timeDislay = document.getElementById("timeDisplay");
 var timeInput = document.getElementById("timeInput");
 var restInput = document.getElementById("restInput");
@@ -7,7 +8,11 @@ var restInput = document.getElementById("restInput");
 function startStop() {
 	if (timer_active === false) {
 		timer_active = true;
-		countDown(timeInput.value * 60);
+		if (workingNow === true) {
+			countDown(timeInput.value * 60);
+		} else {
+			breakDown(restInput.value * 60);
+		}
 	} else {
 		timer_active = false;
 		clearTimeout(timer); // stops the countdown
@@ -16,25 +21,27 @@ function startStop() {
 
 function countDown(seconds) {
 	timer_active = true;
+	workingNow = true;
 	if (seconds >= 0) {
 		displayTime(seconds--); // decrement and display
 		timer = setTimeout(function(){ countDown(seconds) }, 10);
 	} else {
-		document.getElementById("workBreak").innerHTML = "Smoke if you got 'em";
 		timer_active = false;
 		clearTimeout(timer);
+		document.getElementById("workBreak").innerHTML = "Smoke if you got 'em";
 		breakDown(restInput.value * 60);
 	}
 }
 function breakDown(seconds) {
 	timer_active = true;
+	workingNow = false;
 	if (seconds >= 0) {
 		displayTime(seconds--); // decrement and display
 		timer = setTimeout(function(){ breakDown(seconds) }, 10);
 	} else {
-		document.getElementById("workBreak").innerHTML = "You Work Now!";
 		timer_active = false;
 		clearTimeout(timer);
+		document.getElementById("workBreak").innerHTML = "You Work Now!";
 		countDown(timeInput.value * 60);
 	}
 }

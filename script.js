@@ -9,6 +9,8 @@ function startStop() {
 	if (timer_active === false) {
 		timer_active = true;
 		if (workingNow === true) {
+			document.getElementById("workBreak").innerHTML = "You Work Now!";
+			document.getElementById("timeBox").style.backgroundColor = 'red';
 			countDown(timeInput.value * 60);
 		} else {
 			breakDown(restInput.value * 60);
@@ -29,6 +31,7 @@ function countDown(seconds) {
 		timer_active = false;
 		clearTimeout(timer);
 		document.getElementById("workBreak").innerHTML = "Smoke if you got 'em";
+		document.getElementById("timeBox").style.backgroundColor = 'green';
 		breakDown(restInput.value * 60);
 	}
 }
@@ -42,6 +45,7 @@ function breakDown(seconds) {
 		timer_active = false;
 		clearTimeout(timer);
 		document.getElementById("workBreak").innerHTML = "You Work Now!";
+		document.getElementById("timeBox").style.backgroundColor = 'red';
 		countDown(timeInput.value * 60);
 	}
 }

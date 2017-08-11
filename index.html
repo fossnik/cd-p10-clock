@@ -8,26 +8,30 @@
 
 <body>
 	<div id="clock">
-		<div class="center">
-			<h1>Pomodoro Clock!</h1>
-			<div id="timeX">
+		<h1>Pomodoro Clock!</h1>
+		<div class="flex-container">
+			<div>
 				Work:
 				<br><input id="timeInput" type="number" value="25"></input>
 				<br><button onclick="timeInput.value = Number(timeInput.value) + 1">+</button>
 				<button onclick="timeInput.value = Number(timeInput.value) - 1">-</button>
 			</div>
-			<div id="restX">
+			
+			<div>
 				Rest:
 				<br><input id="restInput" type="number" value="5"></input>
 				<br><button onclick="restInput.value = Number(restInput.value) + 1">+</button>
 				<button onclick="restInput.value = Number(restInput.value) - 1">-</button>
 			</div>
+		</div>
+
+		<div class="flex-container" style="flex-direction: column;">
 			<button id="startStop" onclick="startStop()">Start!</button>
-			<br>
-				<div id="timeBox">
-					<div id="workBreak">You Work Now!</div>
-					<div id="timeDisplay"></div>
-				</div>
+		</div>
+
+		<div class="flex-container" id="timeBox">
+			<div id="workBreak"></div>
+			<div id="timeDisplay"></div>
 		</div>
 	</div>
 </body>

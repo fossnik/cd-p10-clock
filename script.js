@@ -40,7 +40,7 @@ function breakDown(seconds) {
 	workingNow = false;
 	if (seconds >= 0) {
 		displayTime(seconds--); // decrement and display
-		timer = setTimeout(function(){ breakDown(seconds) }, 10);
+		timer = setTimeout(function(){ breakDown(seconds) }, 1000);
 	} else {
 		timer_active = false;
 		clearTimeout(timer);

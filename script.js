@@ -26,7 +26,7 @@ function countDown(seconds) {
 	workingNow = true;
 	if (seconds >= 0) {
 		displayTime(seconds--); // decrement and display
-		timer = setTimeout(function(){ countDown(seconds) }, 10);
+		timer = setTimeout(function(){ countDown(seconds) }, 1000);
 	} else {
 		timer_active = false;
 		clearTimeout(timer);
